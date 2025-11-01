@@ -1,28 +1,27 @@
 package ar.edu.unju.escmi.tp5.collections;
 
+import java.util.HashMap;
+import java.util.Map;
 import ar.edu.unju.escmi.tp5.dominio.Producto;
-import java.util.ArrayList;
-import java.util.List;
 
-public class CollectionProducto { // Colección estática para gestionar productos
-    public static List<Producto> productos = new ArrayList<>();
+public class CollectionProducto {
+    public static Map<Integer, Producto> productos = new HashMap<>();
 
-    // Precarga inicial de productos
-    public static void precargarProductos() {
-        Producto p1 = new Producto(1002, "Fideo Knorr Spaghetti x500gr", 1200.00, 0.0);
-        Producto p2 = new Producto(1003, "Arroz Gallo 1kg", 900.00, 25.0);
-        agregarProducto(p1);
-        agregarProducto(p2);
+    public static void guardarProducto(Producto producto) {
+        productos.put(producto.getCodigoProducto(), producto);
     }
 
-    public static void agregarProducto(Producto p) { // Agrega un producto a la lista
-        productos.add(p);
+    public static Producto buscarProducto(int codigoProducto) {
+        return productos.get(codigoProducto);
     }
 
-    public static Producto buscarProducto(int codigo) { // Busca un producto por su código
-        for (Producto p : productos) {
-            if (p.getCodigo() == codigo) return p; 
-        }
-        return null;
+    public static void precargarProducto() {
+        productos.put(1001, new Producto(1001, "Fideos Knorr 500gr", 1200.0, 0));
+        productos.put(1002, new Producto(1002, "Arroz Gallo Oro 1kg", 950.0, 25));
+        productos.put(1003, new Producto(1003, "Aceite Cocinero 1.5lt", 3500.0, 30));
+        productos.put(1004, new Producto(1004, "Yerba Taragui 1kg", 2100.0, 0));
+        productos.put(1005, new Producto(1005, "Azúcar Ledesma 1kg", 1400.0, 0));
+        productos.put(1006, new Producto(1006, "Celusal 1/2Kg", 600.0, 0));
+        // El producto consta de: codigo, descripcion, precio, descuento, stock
     }
 }

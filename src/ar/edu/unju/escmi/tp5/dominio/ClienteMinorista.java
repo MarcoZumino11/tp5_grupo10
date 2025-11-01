@@ -2,21 +2,48 @@ package ar.edu.unju.escmi.tp5.dominio;
 
 public class ClienteMinorista extends Cliente {
     private String obraSocial;
-    private double descuento; // 0.10 si aplica
 
-    // Constructor
-    public ClienteMinorista(int dni, String nombre, String direccion, String obraSocial, boolean presentaDni) { 
-        super(dni, nombre, direccion);
-        this.obraSocial = obraSocial;
-        this.descuento = (presentaDni && "PAMI".equalsIgnoreCase(obraSocial)) ? 0.10 : 0.0; // 10% de descuento si presenta DNI y obra social es PAMI
+    public ClienteMinorista() {
+        // Constructor vacio
     }
-    // Getters
-    public String getObraSocial() { return obraSocial; } 
-    public double getDescuento() { return descuento; }
+
+    // Constructor parametrizado(con los atributos de la superclase)
+    public ClienteMinorista(int dni, String nombre, String apellido, String direccion, String obraSocial) {
+        super(dni, nombre, direccion, apellido);
+        this.obraSocial = obraSocial;
+    }
+
+    public String getObraSocial() {
+        return obraSocial;
+    }
+
+    public void setObraSocial(String obraSocial) {
+        this.obraSocial = obraSocial;
+    }
 
     @Override
-    public void mostrarDatos() {
-        super.mostrarDatos();
-        System.out.println("Obra Social: " + obraSocial + " - Descuento aplicado: " + (descuento * 100) + "%");
+    public String toString() {
+        return "ClienteMinorista{" +
+                "dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", obraSocial='" + obraSocial + '\'' +
+                '}';
     }
+
+    public double aplicarDescuento(double precio) {
+        if (this.dni != 0) {
+            if (this.obraSocial.equalsIgnoreCase("PAMI")) {
+                System.out.println("El cliente tiene un descuento del 10% en la compra.");
+                return precio * 0.9; // Aplica 10% de descuento
+            } else {
+                System.out.println("El cliente no tiene descuento.");
+                return precio; // No hay descuento
+            }
+        } else {
+            System.out.println("El cliente no esta identificado.");
+            return precio; // No hay descuento
+        }
+    }
+
 }

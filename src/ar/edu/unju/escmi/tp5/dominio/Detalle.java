@@ -1,24 +1,41 @@
 package ar.edu.unju.escmi.tp5.dominio;
 
 public class Detalle {
-    private Producto producto;
     private int cantidad;
-    private double precioUnitario; // precio por unidad usado en la venta (ya con descuento de producto/mayorista)
-    private double importe; 
+    private Producto producto;
+    private double precioCalculadoConDescuento;
 
-    // Constructor
-    public Detalle(Producto producto, int cantidad, double precioUnitario) {
-        this.producto = producto;
+    public Detalle() {
+    }
+
+    public Detalle(Producto producto, int cantidad, double precioCalculadoConDescuento) {
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
-        this.importe = cantidad * precioUnitario;
+        this.producto = producto;
+        this.precioCalculadoConDescuento = precioCalculadoConDescuento;
     }
-    // Getters
-    public double getImporte() { return importe; } 
-    public int getCantidad() { return cantidad; } 
-    public Producto getProducto() { return producto; }
 
-    public void mostrarDetalle() { // Muestra el detalle de la venta
-        System.out.println(producto.getDescripcion() + " | Cant: " + cantidad + " | P.unit: $" + precioUnitario + " | Importe: $" + importe);
+    public Producto getProducto() {
+        return producto;
     }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+    
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(byte cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double calcularImporte() {
+        return cantidad * precioCalculadoConDescuento;
+    }
+    
+    public double getPrecioCalculadoConDescuento() {
+        return precioCalculadoConDescuento;
+    }
+
 }
