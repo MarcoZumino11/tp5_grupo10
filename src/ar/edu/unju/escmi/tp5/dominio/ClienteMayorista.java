@@ -20,6 +20,7 @@ public class ClienteMayorista extends Cliente {
         this.codigo = codigo; 
     }
 
+    
     @Override
     public String toString() {
         return "ClienteMayorista{" +
