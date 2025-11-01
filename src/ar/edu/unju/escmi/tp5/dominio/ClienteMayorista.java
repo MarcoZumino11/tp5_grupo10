@@ -1,21 +1,32 @@
 package ar.edu.unju.escmi.tp5.dominio;
 
 public class ClienteMayorista extends Cliente {
-    private int codigo; // Código único para cada cliente mayorista
+    private int codigo;
 
-    // Constructor
-    public ClienteMayorista(int dni, String nombre, String direccion, int codigo) {
-        super(dni, nombre, direccion); // Llamada al constructor de la clase base
+    public ClienteMayorista() {
+        // Constructor vacio
+    }
+
+    // Constructor parametrizado(con los atributos de la superclase)
+    public ClienteMayorista(int dni, String nombre, String direccion, String apellido, int codigo) {
+        super(dni, nombre, direccion, apellido);
         this.codigo = codigo;
     }
-    // Getter
-    public int getCodigo() {
-        return codigo;
+
+    public int getCodigo() { 
+        return codigo; 
+    }
+    public void setCodigo(int codigo) { 
+        this.codigo = codigo; 
     }
 
-    @Override // Implementación del método abstracto
-    public void mostrarDatos() { 
-        super.mostrarDatos();
-        System.out.println("Código Cliente Mayorista: " + codigo);
+    @Override
+    public String toString() {
+        return "ClienteMayorista{" +
+                "dni=" + dni +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", codigo=" + codigo +
+                '}';
     }
 }
