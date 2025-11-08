@@ -3,22 +3,22 @@ package ar.edu.unju.escmi.tp5.dominio;
 import ar.edu.unju.escmi.tp5.collections.CollectionFactura;
 
 public abstract class Cliente {
-    // Atributos protegidos
-    protected int dni;
-    protected String nombre;
-    protected String apellido;
-    protected String direccion;
+    // Atributos privados según diagrama
+    private int dni;
+    private String nombre;
+    private String apellido;
+    private String direccion;
 
     public Cliente() {
         // Constructor vacio
     }
 
     // Constructor parametrizado
-    public Cliente(int dni, String nombre, String direccion, String apellido) {
+    public Cliente(int dni, String nombre, String apellido, String direccion) {
         this.dni = dni;
         this.nombre = nombre;
-        this.direccion = direccion;
         this.apellido = apellido;
+        this.direccion = direccion;
     }
 
     // Getters y Setters
@@ -46,11 +46,11 @@ public abstract class Cliente {
         this.apellido = apellido;
     }
 
-    public String getdireccion() {
+    public String getDireccion() {
         return direccion;
     }
 
-    public void setdireccion(String direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
@@ -64,6 +64,9 @@ public abstract class Cliente {
             System.out.println("No se encontró la factura con número: " + numeroFactura);
         }
     }
+
+    // Método abstracto mostrarDatos
+    public abstract void mostrarDatos();
 
     @Override
     public String toString() {

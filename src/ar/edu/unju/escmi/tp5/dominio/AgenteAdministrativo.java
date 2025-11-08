@@ -19,7 +19,7 @@ public class AgenteAdministrativo extends Empleado {
 
     // Métodos
     public static void altaProducto(Producto producto) {
-    CollectionProducto.guardarProducto(producto);
+        CollectionProducto.agregarProducto(producto);
     }
 
     public static Cliente identificarCliente() {
@@ -28,10 +28,9 @@ public class AgenteAdministrativo extends Empleado {
         return CollectionCliente.buscarCliente(dni);
     }
 
-    public static void realizarVenta( Factura factura ) {
-        // Paso 6: Guardar factura
+    public static void realizarVenta(Factura factura) {
         factura.calcularTotal();
-        CollectionFactura.guardarFactura(factura);
+        CollectionFactura.agregarFactura(factura);
         System.out.println("Factura generada exitosamente:\n");
         factura.mostrarFactura();
     }
@@ -39,11 +38,11 @@ public class AgenteAdministrativo extends Empleado {
     @Override
     public String toString() {
         return "AgenteAdministrativo{" +
-                "idEmpleado=" + idEmpleado +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni=" + dni +
-                ", domicilio='" + domicilio + '\'' +
+                "idEmpleado=" + getIdEmpleado() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
+                ", dni=" + getDni() +
+                ", domicilio='" + getDomicilio() + '\'' +
                 '}';
     }
 }

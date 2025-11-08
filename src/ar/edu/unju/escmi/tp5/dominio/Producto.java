@@ -3,21 +3,21 @@ package ar.edu.unju.escmi.tp5.dominio;
 public class Producto {
     private int codigoProducto;
     private String descripcion;
-    private double precio;
-    private int stock;
+    private double precioUnitario;
     private double descuento;
+    private int stock;
 
     // Constructor por defecto
     public Producto() {
     }
 
     // Constructor parametrizado
-    public Producto(int codigoProducto, String descripcion, double precio, double descuento) {
+    public Producto(int codigoProducto, String descripcion, double precioUnitario, double descuento) {
         this.codigoProducto = codigoProducto;
         this.descripcion = descripcion;
-        this.precio = precio;
+        this.precioUnitario = precioUnitario;
         this.descuento = descuento;
-        stock = 5000;
+        this.stock = 5000;
     }
 
     // Setters para modificar los atributos
@@ -30,8 +30,8 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public void setStock(int stock) {
@@ -51,8 +51,8 @@ public class Producto {
         return descripcion;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getPrecioUnitario() {
+        return precioUnitario;
     }
 
     public int getStock() {

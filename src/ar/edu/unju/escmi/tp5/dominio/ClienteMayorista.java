@@ -4,29 +4,39 @@ public class ClienteMayorista extends Cliente {
     private int codigo;
 
     public ClienteMayorista() {
-        // Constructor vacio
+        // constructor vacío
     }
 
-    // Constructor parametrizado(con los atributos de la superclase)
-    public ClienteMayorista(int dni, String nombre, String direccion, String apellido, int codigo) {
-        super(dni, nombre, direccion, apellido);
+    // Constructor parametrizado (usa los atributos de la superclase)
+    public ClienteMayorista(int dni, String nombre, String apellido, String direccion, int codigo) {
+        super(dni, nombre, apellido, direccion);
         this.codigo = codigo;
     }
 
-    public int getCodigo() { 
-        return codigo; 
-    }
-    public void setCodigo(int codigo) { 
-        this.codigo = codigo; 
+    @Override
+    public void mostrarDatos() {
+        System.out.println("Cliente Mayorista:");
+        System.out.println("Nombre: " + getNombre() + " " + getApellido());
+        System.out.println("DNI: " + getDni());
+        System.out.println("Dirección: " + getDireccion());
+        System.out.println("Código: " + codigo);
     }
 
-    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
     @Override
     public String toString() {
         return "ClienteMayorista{" +
-                "dni=" + dni +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
+                "dni=" + getDni() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
+                ", direccion='" + getDireccion() + '\'' +
                 ", codigo=" + codigo +
                 '}';
     }
