@@ -4,13 +4,22 @@ public class ClienteMinorista extends Cliente {
     private String obraSocial;
 
     public ClienteMinorista() {
-        // Constructor vacio
+        // constructor vacío
     }
 
-    // Constructor parametrizado(con los atributos de la superclase)
+    // Constructor parametrizado (usa los atributos de la superclase)
     public ClienteMinorista(int dni, String nombre, String apellido, String direccion, String obraSocial) {
-        super(dni, nombre, direccion, apellido);
+        super(dni, nombre, apellido, direccion);
         this.obraSocial = obraSocial;
+    }
+
+    @Override
+    public void mostrarDatos() {
+        System.out.println("Cliente Minorista:");
+        System.out.println("Nombre: " + getNombre() + " " + getApellido());
+        System.out.println("DNI: " + getDni());
+        System.out.println("Dirección: " + getDireccion());
+        System.out.println("Obra Social: " + obraSocial);
     }
 
     public String getObraSocial() {
@@ -24,26 +33,19 @@ public class ClienteMinorista extends Cliente {
     @Override
     public String toString() {
         return "ClienteMinorista{" +
-                "dni=" + dni +
-                ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
+                "dni=" + getDni() +
+                ", nombre='" + getNombre() + '\'' +
+                ", apellido='" + getApellido() + '\'' +
+                ", direccion='" + getDireccion() + '\'' +
                 ", obraSocial='" + obraSocial + '\'' +
                 '}';
     }
 
+    // Aplica descuento según obra social (ejemplo: PAMI 10%)
     public double aplicarDescuento(double precio) {
-        if (this.dni != 0) {
-            if (this.obraSocial.equalsIgnoreCase("PAMI")) {
-                System.out.println("El cliente tiene un descuento del 10% en la compra.");
-                return precio * 0.9; // Aplica 10% de descuento
-            } else {
-                System.out.println("El cliente no tiene descuento.");
-                return precio; // No hay descuento
-            }
-        } else {
-            System.out.println("El cliente no esta identificado.");
-            return precio; // No hay descuento
+        if (obraSocial != null && obraSocial.equalsIgnoreCase("PAMI")) {
+            return precio * 0.9; // 10% de descuento
         }
+        return precio; // sin descuento
     }
-
 }

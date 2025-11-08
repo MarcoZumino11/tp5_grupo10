@@ -169,7 +169,7 @@ public class MenuPrincipal {
                                     int cantidad = sc.nextInt();
                                     sc.nextLine(); // Para limpiar el buffer del scanner
 
-                                    double precioUnitario = producto.getPrecio();
+                                    double precioUnitario = producto.getPrecioUnitario();
 
                                     if (producto.getStock() < cantidad) {
                                         System.out.println("Stock insuficiente. Stock disponible: " + producto.getStock());

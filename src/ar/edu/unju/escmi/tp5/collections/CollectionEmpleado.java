@@ -9,7 +9,7 @@ import ar.edu.unju.escmi.tp5.dominio.AgenteAdministrativo;
 public class CollectionEmpleado {
     public static Map<Integer, Empleado> empleados = new HashMap<>();
 
-    public static void guardarEmpleado(Empleado empleado) {
+    public static void agregarEmpleado(Empleado empleado) {
         empleados.put(empleado.getIdEmpleado(), empleado);
     }
 

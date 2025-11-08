@@ -5,10 +5,9 @@ import java.util.Map;
 import ar.edu.unju.escmi.tp5.dominio.Factura;
 
 public class CollectionFactura {
-    // La clave del map tiene que ser el numero de factura
     public static Map<Integer, Factura> facturas = new HashMap<>();
 
-    public static void guardarFactura(Factura factura) {
+    public static void agregarFactura(Factura factura) {
         facturas.put(factura.getNumeroFactura(), factura);
     }
 
@@ -18,5 +17,13 @@ public class CollectionFactura {
 
     public static Map<Integer, Factura> getFacturas() {
         return facturas;
+    }
+
+    public static double totalVentas() {
+        double total = 0;
+        for (Factura factura : facturas.values()) {
+            total += factura.calcularTotal();
+        }
+        return total;
     }
 }

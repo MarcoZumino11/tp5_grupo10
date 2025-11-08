@@ -6,23 +6,19 @@ import java.util.List;
 
 public class Factura {
     private LocalDate fecha;
+    private int numeroFactura;
     private Cliente cliente;
     private List<Detalle> detalles = new ArrayList<>();
     private static int contador = 1;
-    private int numeroFactura;
 
     public Factura() {
 
     }
 
     public Factura(LocalDate fecha, Cliente cliente) {
-        this.numeroFactura = contador ++;
+        this.numeroFactura = contador++;
         this.fecha = fecha;
         this.cliente = cliente;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
     }
 
     public int getNumeroFactura() {
@@ -35,6 +31,10 @@ public class Factura {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public List<Detalle> getDetalles() {
@@ -61,15 +61,15 @@ public class Factura {
         System.out.println("----- FACTURA -----");
         System.out.println("N°: " + getNumeroFactura());
         System.out.println("Fecha: " + fecha);
-        System.out.println("Cliente: " + cliente.nombre + " " + cliente.apellido );
-        System.out.println("DNI: " + cliente.dni);
-        System.out.println("Dirección: " + cliente.direccion);
+        System.out.println("Cliente: " + cliente.getNombre() + " " + cliente.getApellido());
+        System.out.println("DNI: " + cliente.getDni());
+        System.out.println("Dirección: " + cliente.getDireccion());
         System.out.println("-------------------");
         System.out.println("DETALLE:");
         for (Detalle d : detalles) {
             System.out.println("Cantidad: " + d.getCantidad() + "\n" +
                     "Descripción: " + d.getProducto().getDescripcion() + "\n" +
-                    "Precio Unitario: " + d.getProducto().getPrecio() + "\n" +
+                    "Precio Unitario: " + d.getProducto().getPrecioUnitario() + "\n" +
                     "Precio Unitario con Descuento: " + d.getPrecioCalculadoConDescuento() + "\n" +
                     "Importe: " + d.calcularImporte());
             System.out.println("-------------------");

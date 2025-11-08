@@ -9,8 +9,8 @@ public class Detalle {
     }
 
     public Detalle(Producto producto, int cantidad, double precioCalculadoConDescuento) {
-        this.cantidad = cantidad;
         this.producto = producto;
+        this.cantidad = cantidad;
         this.precioCalculadoConDescuento = precioCalculadoConDescuento;
     }
 
